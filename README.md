@@ -1,5 +1,5 @@
 # Edpoint
-This project aims to provide a one stop solution for the students by providing basic tools for students, a discussion forum, study materials, tutorial videos, a chat feature and an Al chatbot.
+This project aims to provide a one stop solution for the students by providing basic tools for students, a discussion forum, study materials, tutorial videos and a Virtual Assistant
 
 # Tools
 ### Server-side:
