@@ -1,0 +1,255 @@
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #assistant:hover {
+            transform: scale(1.5);
+        }
+
+        .assistantInput {
+            display: none;
+        }
+
+        .search {
+            position: relative;
+            display: flex;
+            min-width: 100px;
+        }
+
+
+        .searchInput {
+            border: 1px solid grey;
+            border-radius: 5px;
+            height: 28px;
+            width: 80%;
+            padding: 2px 23px 2px 30px;
+            outline: 0;
+            background-color: #f5f5f5;
+        }
+
+        .searchInput:hover,
+        .searchInput:focus {
+            border: 1.5px solid #009688;
+            background-color: white;
+        }
+
+
+        .search-icon {
+            position: absolute;
+            top: 10px;
+            left: 8px;
+            width: 15px;
+        }
+
+        .clear-icon {
+            position: absolute;
+            top: 10px;
+            right: 8px;
+            width: 15px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+
+        .navButton {
+            border-radius: 10px;
+            margin: 40px;
+            display: inline-flex;
+            height: auto;
+            width: auto;
+            font-size: 20px;
+            background-color: #e99b43;
+            border: 2px solid white;
+            color: white;
+            transition: all 0.2s linear 0s;
+        }
+
+        .navButton:hover {
+            background-color: white !important;
+            color: #e99b43;
+        }
+
+
+
+
+        div.c2 {
+            background-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 230px;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 100px 320px;
+            font-size: 150%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.c3 {
+            background-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 230px;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 100px 320px;
+            font-size: 150%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.c4 {
+            background-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 230px;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 100px 320px;
+            font-size: 150%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.c5 {
+            background-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 230px;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 100px 320px;
+            font-size: 150%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+           var chatState = false;
+      function chatControls(){
+        if (chatState) {
+          var ref = document.getElementsByClassName("assistantInput");
+          for (var i = 0; i < ref.length; i++) {
+            ref[i].style.display = "none";
+            ref[i].value = "";
+            chatState = false;
+          }
+        }
+        else {
+        var ref = document.getElementsByClassName("assistantInput");
+          for (var i = 0; i < ref.length; i++) {
+            ref[i].style.display = "block";
+            chatState = true;
+          }
+        }
+      }
+        // function searchClear() {
+        //     document.getElementById("clear-icon").style.visibility = "visible";
+        // }
+        // function resetSearch() {
+        //     document.getElementById("searchInput").value = "";
+        //     document.getElementById("clear-icon").style.visibility = "hidden";
+        // }
+
+        function submit_query() {
+        if (
+          document.getElementById("query").value != "" &&
+          document.getElementById("queryType").value != ""
+        ){
+          alert(
+            "We have received your query! Check your email after some time for a response from our staff!"
+          );
+          document.getElementById("submitForm").href="mailto:yashseth2002@gmail.com?subject="+document.getElementById("queryType").value+"&body="+document.getElementById("query").value;
+        }
+          
+        else alert("Please enter values and re-submit the form!");
+        chatControls();
+      }
+
+    </script>
+<div
+class="virtualAssistant"
+style="
+  padding: 12px;
+  position: absolute;
+  float: right;
+  top: 0;
+  z-index: 999;
+"
+>
+<div
+  style="
+    padding: 12px;
+    position: sticky;
+    float: right;
+    top: 0;
+    z-index: 999;
+  "
+>
+  <img
+    src="assistant.jpg"
+    id="assistant"
+    alt="virtual assistant logo"
+    height="35px"
+    width="35px"
+    onclick="chatControls()"
+  /><br /><br />
+  <input
+    type="text"
+    placeholder="Enter your query type"
+    class="assistantInput"
+    id="queryType"
+    value=""
+    style="width: 350px"
+  /><br />
+  <textarea
+    class="assistantInput"
+    placeholder="Enter your query here"
+    value=""
+    id="query"
+    style="resize: none; height: 200px; width: 400px"
+  ></textarea
+  ><br />
+  <a style="text-decoration: none" href="" id="submitForm"
+    ><button class="assistantInput" onclick="submit_query()">
+      Submit</button
+    ><br
+  /></a>
+  <button onclick="chatControls()" class="assistantInput">Close</button>
+</div>
+</div>
+
+
+    <div class="container" style="text-align: center;background-color: lightcoral;">
+        <div class="navbar" style="display: inline-block;">
+            <a href="homepage.html" style="text-decoration: none;"><img src="Edpoint-logos_black_crop.png"
+                    alt="Edpoint logo" height="60px" width="200px"></a>
+        </div>
+        <!-- <div class="search" style="display: inline-block;vertical-align: 150%;">
+            <img class="search-icon" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" />
+            <input id="searchInput" onClick="searchClear()" class="searchInput" placeholder="Search" type="text">
+            <img class="clear-icon" onclick="resetSearch()" id="clear-icon"
+                src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+            <button onClick="resetSearch()">Search</button>
+        </div> -->
+    </div>
+
+
+    <br><br><br><br><div class="c2" style="margin: 0 auto;"><a href="conversion.html"><b>Decimal to...</b></a></div><br><br>
+    <div class="c3" style="margin: 0 auto;"><a href="conversion2.html"><b> Binary to...</b></a></div><br><br>
+    <div class="c4" style="margin: 0 auto;"><a href="conversion3.html"><b> Octal to...</b></a></div><br><br>
+    <div class="c5" style="margin: 0 auto;"><a href="conversion4.html"><b> Hexadecimal to...</b></a></div><br><br>
+    <a href="tools.html" style="text-decoration: none">
+        <div style="text-align:center"><button>Go back</button></div>
+        </a>
+</body>
+
+</html>

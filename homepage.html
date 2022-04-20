@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="books_favicon.png" />
+    <title>Edpoint</title>
+  </head>
+
+  <body>
+    <style>
+      * {
+        font-family: Helvetica, sans-serif;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #assistant:hover {
+        transform: scale(1.5);
+      }
+
+      .assistantInput {
+        display: none;
+      }
+
+      .search {
+        position: relative;
+        display: flex;
+        min-width: 100px;
+      }
+
+      #logout{
+        transition-duration: 0.4s;
+      }
+
+      #logout:hover {
+        background-color: #901b5b; /* Green */
+        color: white;
+      }
+
+      .searchInput {
+        border: 1px solid grey;
+        border-radius: 5px;
+        height: 28px;
+        width: 80%;
+        padding: 2px 23px 2px 30px;
+        outline: 0;
+        background-color: #f5f5f5;
+      }
+
+      .searchInput:hover,
+      .searchInput:focus {
+        border: 1.5px solid #009688;
+        background-color: white;
+      }
+
+      .search-icon {
+        position: absolute;
+        top: 10px;
+        left: 8px;
+        width: 15px;
+      }
+
+      .clear-icon {
+        position: absolute;
+        top: 10px;
+        right: 8px;
+        width: 15px;
+        cursor: pointer;
+        visibility: hidden;
+      }
+
+      .navButton {
+        border-radius: 10px;
+        margin: 40px;
+        display: inline-flex;
+        height: auto;
+        width: auto;
+        font-size: 20px;
+        background-color: #e99b43;
+        border: 2px solid white;
+        color: white;
+        transition: all 0.2s linear 0s;
+      }
+
+      .navButton:hover {
+        background-color: white !important;
+        color: #e99b43;
+      }
+    </style>
+    <script>
+      var chatState = false;
+      function chatControls() {
+        if (chatState) {
+          var ref = document.getElementsByClassName("assistantInput");
+          for (var i = 0; i < ref.length; i++) {
+            ref[i].style.display = "none";
+            ref[i].value = "";
+            chatState = false;
+          }
+        } else {
+          var ref = document.getElementsByClassName("assistantInput");
+          for (var i = 0; i < ref.length; i++) {
+            ref[i].style.display = "block";
+            chatState = true;
+          }
+        }
+      }
+
+      //   function openChat() {
+      //     if (!state) {
+      //       var ref = document.getElementsByClassName("assistantInput");
+      //       for (var i = 0; i < ref.length; i++) {
+      //         ref[i].style.display = "block";
+      //         state = true;
+      //       }
+      //     }
+      //   }
+      //   function closeAssistant() {
+      //     if (!state) {
+      //       var ref = document.getElementsByClassName("assistantInput");
+      //       for (var i = 0; i < ref.length; i++) {
+      //         ref[i].style.display = "none";
+      //         ref[i].value = "";
+      //         state = false;
+      //       }
+      //     }
+      //   }
+      // function searchClear() {
+      //   document.getElementById("clear-icon").style.visibility = "visible";
+      // }
+      // function resetSearch() {
+      //   document.getElementById("searchInput").value = "";
+      //   document.getElementById("clear-icon").style.visibility = "hidden";
+      // }
+
+      function submit_query() {
+        if (
+          document.getElementById("query").value != "" &&
+          document.getElementById("queryType").value != ""
+        ){
+          alert(
+            "We have received your query! Check your email after some time for a response from our staff!"
+          );
+          document.getElementById("submitForm").href="mailto:yashseth2002@gmail.com?subject="+document.getElementById("queryType").value+"&body="+document.getElementById("query").value;
+        }
+          
+        else alert("Please enter values and re-submit the form!");
+        chatControls();
+      }
+    </script>
+    <div
+      class="virtualAssistant"
+      style="
+        padding: 12px;
+        position: absolute;
+        float: right;
+        top: 0;
+        z-index: 999;
+      "
+    >
+      <div
+        style="
+          padding: 12px;
+          position: sticky;
+          float: right;
+          top: 0;
+          z-index: 999;
+        "
+      >
+        <img
+          src="assistant.jpg"
+          id="assistant"
+          alt="virtual assistant logo"
+          height="35px"
+          width="35px"
+          onclick="chatControls()"
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Enter your query type"
+          class="assistantInput"
+          id="queryType"
+          value=""
+          style="width: 350px"
+        /><br />
+        <textarea
+          class="assistantInput"
+          placeholder="Enter your query here"
+          value=""
+          id="query"
+          style="resize: none; height: 200px; width: 400px"
+        ></textarea
+        ><br />
+        <a style="text-decoration: none" href="" id="submitForm"
+          ><button class="assistantInput" onclick="submit_query()">
+            Submit</button
+          ><br
+        /></a>
+        <button onclick="chatControls()" class="assistantInput">Close</button>
+      </div>
+    </div>
+
+    <div
+      class="container"
+      style="text-align: center; background-color: lightcoral"
+    >
+      <div class="navbar" style="display: inline-block">
+        <img style="margin-left:50px"
+          src="Edpoint-logos_black_crop.png"
+          alt="Edpoint logo"
+          height="60px"
+          width="200px"
+        />
+      </div>
+      <!-- <div class="search" style="display: inline-block; vertical-align: 150%"> -->
+        <!-- <img
+          class="search-icon"
+          src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"
+        />
+        <input
+          id="searchInput"
+          onClick="searchClear()"
+          class="searchInput"
+          placeholder="Search"
+          type="text"
+        />
+        <img
+          class="clear-icon"
+          onclick="resetSearch()"
+          id="clear-icon"
+          src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png"
+        /> -->
+        <!-- <button onClick="resetSearch()">Search</button> -->
+      <!-- </div> -->
+      <div style="float: right; margin-right: 20px;margin-top: 20px; position: sticky">
+        <a href="login.html" style="text-decoration: none"
+          ><button id="logout">Logout</button></a
+        >
+      </div>
+    </div>
+    <div
+      class="container1"
+      style="
+        width: 100%;
+        text-align: center;
+        height: 700px;
+        position: relative;
+        color: white;
+        font-size: larger;
+      "
+    >
+      <img src="sun.jpg" alt="picture of sunset" height="100%" width="100%" />
+      <div
+        class="welcome"
+        style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "
+      >
+        <div class="message">
+          <h1>Welcome to Edpoint!</h1>
+          <h2>A one-stop solution for all academic needs.</h2>
+        </div>
+        <div
+          class="links"
+          style="
+            column-count: 3;
+            column-gap: 40px;
+            column-rule: 2px solid lightyellow;
+          "
+        >
+          <div class="btn1">
+            <a href="forum.html" style="text-decoration: none"
+              ><button class="navButton">Forum</button></a
+            >
+          </div>
+          <div class="btn2">
+            <a href="tools.html" style="text-decoration: none"
+              ><button class="navButton">Tools</button></a
+            >
+          </div>
+          <div class="btn3">
+            <a href="materials.html" style="text-decoration: none"
+              ><button class="navButton">Materials</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="features"
+      style="width: 100%; text-align: center; font-size: large"
+    >
+      <div id="features">
+        <div class="f1" style="height: 320px; background-color: lightblue">
+          <br />
+          <img
+            src="books.jpg"
+            alt="image of books"
+            height="100px"
+            width="100px"
+          />
+          <br />
+          <h3>Large Collection of Materials</h3>
+          <br />
+          <p>
+            We provide a large collection of study materials and resources for
+            the preparation of the students.
+          </p>
+        </div>
+        <div class="f2" style="height: 320px; background-color: lightgreen">
+          <br />
+          <img
+            src="teachers.jpg"
+            alt="image of teachers"
+            height="100px"
+            width="100px"
+          />
+          <br />
+          <h3>Large Community of Students and Teachers</h3>
+          <br />
+          <p>
+            Be assured that you will have someone willing to help you out with
+            your doubts! We have a large community of students and teachers, who
+            are here to help you and discuss your doubts!
+          </p>
+        </div>
+        <div
+          class="f3"
+          style="height: 320px; background-color: lightgoldenrodyellow"
+        >
+          <br />
+          <img
+            src="tools.png"
+            alt="image of tools"
+            height="100px"
+            width="100px"
+          />
+          <br />
+          <h3>All the tools you need, in one place!</h3>
+          <br />
+          <p>
+            We provide a large collection of tools, that academic individuals
+            require on a regular basis. You can easily access them under the
+            tools tab!
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

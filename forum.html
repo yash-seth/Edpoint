@@ -1,0 +1,166 @@
+<html>
+
+<head>
+    <title>Discussion forum</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link href="./styles.css" type="text/css" rel="stylesheet" />
+</head>
+<script>
+    // NAV BAR
+    var chatState = false;
+      function chatControls(){
+        if (chatState) {
+          var ref = document.getElementsByClassName("assistantInput");
+          for (var i = 0; i < ref.length; i++) {
+            ref[i].style.display = "none";
+            ref[i].value = "";
+            chatState = false;
+          }
+        }
+        else {
+        var ref = document.getElementsByClassName("assistantInput");
+          for (var i = 0; i < ref.length; i++) {
+            ref[i].style.display = "block";
+            chatState = true;
+          }
+        }
+      }
+    // function searchClear() {
+    //     document.getElementById("clear-icon").style.visibility = "visible";
+    // }
+    // function resetSearch() {
+    //     document.getElementById("searchInput").value = "";
+    //     document.getElementById("clear-icon").style.visibility = "hidden";
+    // }
+
+    function submit_query() {
+        if (
+          document.getElementById("query").value != "" &&
+          document.getElementById("queryType").value != ""
+        ){
+          alert(
+            "We have received your query! Check your email after some time for a response from our staff!"
+          );
+          document.getElementById("submitForm").href="mailto:yashseth2002@gmail.com?subject="+document.getElementById("queryType").value+"&body="+document.getElementById("query").value;
+        }
+          
+        else alert("Please enter values and re-submit the form!");
+        chatControls();
+      }
+
+</script>
+
+
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+<div
+      class="virtualAssistant"
+      style="
+        padding: 12px;
+        position: absolute;
+        float: right;
+        top: 0;
+        z-index: 999;
+      "
+    >
+      <div
+        style="
+          padding: 12px;
+          position: sticky;
+          float: right;
+          top: 0;
+          z-index: 999;
+        "
+      >
+        <img
+          src="assistant.jpg"
+          id="assistant"
+          alt="virtual assistant logo"
+          height="35px"
+          width="35px"
+          onclick="chatControls()"
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Enter your query type"
+          class="assistantInput"
+          id="queryType"
+          value=""
+          style="width: 350px"
+        /><br />
+        <textarea
+          class="assistantInput"
+          placeholder="Enter your query here"
+          value=""
+          id="query"
+          style="resize: none; height: 200px; width: 400px"
+        ></textarea
+        ><br />
+        <a style="text-decoration: none" href="" id="submitForm"
+          ><button class="assistantInput" onclick="submit_query()">
+            Submit</button
+          ><br
+        /></a>
+        <button onclick="chatControls()" class="assistantInput">Close</button>
+      </div>
+    </div>
+
+
+    <div class="container" style="text-align: center;background-color: lightcoral;">
+        <div class="navbar" style="display: inline-block;background-color: lightcoral;">
+            <a href="homepage.html" style="text-decoration: none;"><img src="Edpoint-logos_black_crop.png"
+                    alt="Edpoint logo" height="60px" width="200px"></a>
+        </div>
+        <!-- <div class="search" style="display: inline-block;vertical-align: 150%;">
+            <img class="search-icon" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" />
+            <input id="searchInput" onClick="searchClear()" class="searchInput" placeholder="Search" type="text"
+                size="20">
+            <img class="clear-icon" onclick="resetSearch()" id="clear-icon"
+                src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+            <button onClick="resetSearch()">Search</button>
+        </div> -->
+    </div>
+
+
+
+
+
+    <div class="navbar">
+        <h1> Discussion Forum </h1>
+    </div>
+    <div class="app_body">
+        <div class="activity">
+            <div class="actions">
+                <button> New Question form </button>
+                <input type="text" placeholder="search questions..." />
+            </div>
+            <div class="questions">
+                <ul>
+                    <div id="not_found" class="filtered_out">No match found</div>
+                </ul>
+            </div>
+        </div>
+        <div class="question_form">
+            <div class="new_form">
+                <h1>Welcome to Discussion Forum</h1>
+                <p>Enter a subject and question to get started</p>
+                <form>
+                    <input type="text" name="subject" placeholder="Subject" required />
+                    <textarea name="question" placeholder="Question" required></textarea>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./forum_logic.js"></script>
+</body>
+
+</html>
