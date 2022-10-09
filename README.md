@@ -1,5 +1,5 @@
 # Edpoint - A One-Stop Solution for all your Educational Needs
-This project aims to provide a one stop solution for the students by providing basic tools for students, a discussion forum, study materials, tutorial videos and a Virtual Assistant. Instead of having to navigate to different website for different needs, we attempted to create a single experience which could cater to all the needs.
+This project aims to provide a one-stop solution for the students by providing basic tools for students, a discussion forum, study materials, tutorial videos and a Virtual Assistant. Instead of having to navigate to different website for different needs, we attempted to create a single experience which could cater to all the needs.
 
 # Tools
 ### Server-side:
